@@ -1,0 +1,28 @@
+{
+    "level1": {
+        "orders": [
+            "salad"
+        ],
+        "map": {
+        },
+        "actions": [
+            "chop-tomato",
+            "chop-lettuce",
+            "pantry-generate-tomato",
+            "pantry-generate-lettuce"
+        ],
+        "combinations": [
+            "C-plated-salad-lettuce-tomato",
+            "C-plated-tomato",
+            "C-plated-lettuce",
+            "S-serve-salad-lettuce-tomato",
+            "P-salad-lettuce-tomato",
+            "P-tomato",
+            "P-chopped-tomato",
+            "P-plated-chopped-tomato",
+            "P-lettuce",
+            "P-chopped-lettuce",
+            "P-plated-chopped-lettuce"
+        ]
+    }
+}
