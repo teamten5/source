@@ -4,6 +4,70 @@
             "salad"
         ],
         "map": {
+            "stations": [
+                {
+                    "type": "serving",
+                    "x": 1,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "counter",
+                    "x": 2,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "counter",
+                    "x": 3,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "station-chopping",
+                    "x": 4,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "counter",
+                    "x": 5,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "station-chopping",
+                    "x": 6,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "pantry-tomato",
+                    "x": 7,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "counter",
+                    "x": 8,
+                    "y": 0,
+                    "facing": "south"
+                },
+                {
+                    "type": "pantry-lettuce",
+                    "x": 9,
+                    "y": 0,
+                    "facing": "south"
+                }
+            ],
+            "valid areas": [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "dx": 10,
+                    "dy": 2
+                }
+            ]
         },
         "actions": [
             "chop-tomato",
@@ -15,7 +79,7 @@
             "C-plated-salad-lettuce-tomato",
             "C-plated-tomato",
             "C-plated-lettuce",
-            "S-serve-salad-lettuce-tomato",
+            "S-serve-plated-salad-lettuce-tomato",
             "P-salad-lettuce-tomato",
             "P-tomato",
             "P-chopped-tomato",

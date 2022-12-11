@@ -18,6 +18,7 @@ public class Team15Game extends ApplicationAdapter {
 	HashMap<String, StationType> stationTypes = new HashMap<>();
 	HashMap<String, HashMap<StationType, ChefAction>> chefActions = new HashMap<>();
 	HashMap<String, Combination[]> combinations = new HashMap<>();
+	HashMap<String, LevelType> levelTypes = new HashMap<>();
 
 	@Override
 	public void create() {
@@ -115,5 +116,13 @@ public class Team15Game extends ApplicationAdapter {
 			combinations.put(combinationGroupsJSON.get(i).name, combinationGroup);
 		}
 
+		// levels.json
+
+		JsonValue levelsJSONRoot = jsonReader.parse(Gdx.files.internal("data/levels.json"));
+		for (int i = 0; i < levelsJSONRoot.size; i++) {
+			levelTypes.put(levelsJSONRoot.get(i).name,
+				LevelType.read(levelsJSONRoot.get(i), orderTypes, stationTypes, chefActions,
+					combinations));
+		}
 	}
 }
