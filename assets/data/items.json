@@ -1,0 +1,26 @@
+{
+    "plate": {
+        "image": "onion.png"
+    },
+    "lettuce": {
+        "image": "onion.png"
+    },
+    "chopped-lettuce": {
+        "image": "onion.png"
+    },
+    "plated-chopped-lettuce": {
+        "image": "onion.png"
+    },
+    "tomato": {
+        "image": "onion.png"
+    },
+    "chopped-tomato": {
+        "image": "onion.png"
+    },
+    "plated-chopped-tomato": {
+        "image": "onion.png"
+    },
+    "plated-salad-tomato-lettuce": {
+        "image": "onion.png"
+    }
+}
