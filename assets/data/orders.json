@@ -1,0 +1,15 @@
+{
+    "order-groups": {
+        "salad": [
+            "O-plated-salad-tomato-lettuce"
+        ]
+    },
+    "orders": {
+        "O-plated-lettuce": {
+            "item": "plated-lettuce"
+        },
+        "O-plated-salad-tomato-lettuce": {
+            "item": "plated-salad-tomato-lettuce"
+        }
+    }
+}

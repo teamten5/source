@@ -1,0 +1,32 @@
+{
+    "serving": {
+        "serving": true,
+        "image": "onion.png",
+        "size-x": 100,
+        "size-y": 100
+    },
+    "station-chopping": {
+        "serving": false,
+        "image": "onion.png",
+        "size-x": 100,
+        "size-y": 100
+    },
+    "counter": {
+        "serving": false,
+        "image": "onion.png",
+        "size-x": 100,
+        "size-y": 100
+    },
+    "pantry-tomato": {
+        "serving": false,
+        "image": "onion.png",
+        "size-x": 100,
+        "size-y": 100
+    },
+    "pantry-lettuce": {
+        "serving": false,
+        "image": "onion.png",
+        "size-x": 100,
+        "size-y": 100
+    }
+}

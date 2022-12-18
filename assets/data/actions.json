@@ -1,0 +1,42 @@
+{
+    "chop-tomato": {
+        "stations": [
+            "chopping-board"
+        ],
+        "input": "tomato",
+        "output": "chopped-tomato",
+        "time": 3000,
+        "chef-required": true,
+        "pickup-output": false
+    },
+    "chop-lettuce": {
+        "stations": [
+            "chopping-board"
+        ],
+        "input": "tomato",
+        "output": "chopped-tomato",
+        "time": 3000,
+        "chef-required": true,
+        "pickup-output": false
+    },
+    "pantry-generate-tomato": {
+        "stations": [
+            "pantry-tomato"
+        ],
+        "input": null,
+        "output": "tomato",
+        "time": 0,
+        "chef-required": true,
+        "pickup-output": true
+    },
+    "pantry-generate-lettuce": {
+        "stations": [
+            "pantry-lettuce"
+        ],
+        "input": null,
+        "output": "lettuce",
+        "time": 0,
+        "chef-required": true,
+        "pickup-output": true
+    }
+}

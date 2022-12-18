@@ -1,0 +1,275 @@
+{
+    "combination-groups": {
+        "C-plated-salad-lettuce-tomato": [
+            "plated-salad-combine-lettuce-plated-tomato",
+            "plated-salad-combine-plated-lettuce-plated-tomato",
+            "plated-salad-combine-tomato-plated-lettuce",
+            "plated-salad-combine-plated-tomato-plated-lettuce"
+        ],
+        "C-plated-tomato": [
+            "plated-chopped-tomato-combine-chopped-tomato-plate",
+            "plated-chopped-tomato-combine-plate-chopped-tomato"
+        ],
+        "C-plated-lettuce": [
+            "plated-chopped-lettuce-combine-chopped-lettuce-plate",
+            "plated-chopped-lettuce-combine-plate-chopped-lettuce"
+        ],
+        "S-serve-plated-salad-lettuce-tomato": [
+            "serve-plated-salad-lettuce-tomato"
+        ],
+        "P-salad-lettuce-tomato": [
+            "putdown-salad-lettuce-tomato",
+            "pickup-salad-lettuce-tomato"
+        ],
+        "P-tomato": [
+            "putdown-tomato",
+            "pickup-tomato"
+        ],
+        "P-chopped-tomato": [
+            "putdown-chopped-tomato",
+            "pickup-chopped-tomato"
+        ],
+        "P-plated-chopped-tomato": [
+            "putdown-plated-chopped-tomato",
+            "pickup-plated-chopped-tomato"
+        ],
+        "P-lettuce": [
+            "putdown-lettuce",
+            "pickup-lettuce"
+        ],
+        "P-chopped-lettuce": [
+            "putdown-chopped-lettuce",
+            "pickup-chopped-lettuce"
+        ],
+        "P-plated-chopped-lettuce": [
+            "putdown-plated-chopped-lettuce",
+            "pickup-plated-chopped-lettuce"
+        ]
+    },
+    "combinations": {
+        "plated-salad-combine-lettuce-plated-tomato": {
+            "start-chef": "chopped-lettuce",
+            "start-station": "plated-chopped-tomato",
+            "end-chef": null,
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-salad-combine-plated-lettuce-plated-tomato": {
+            "start-chef": "plated-chopped-lettuce",
+            "start-station": "plated-chopped-tomato",
+            "end-chef": "plate",
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-salad-combine-tomato-plated-lettuce": {
+            "start-chef": "chopped-tomato",
+            "start-station": "plated-chopped-lettuce",
+            "end-chef": null,
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-salad-combine-plated-tomato-plated-lettuce": {
+            "start-chef": "plated-chopped-tomato",
+            "start-station": "plated-chopped-lettuce",
+            "end-chef": "plate",
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-chopped-tomato-combine-chopped-tomato-plate": {
+            "start-chef": "chopped-tomato",
+            "start-station": "plate",
+            "end-chef": null,
+            "end-station": "plated-chopped-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-chopped-tomato-combine-plate-chopped-tomato": {
+            "start-chef": "plate",
+            "start-station": "chopped-tomato",
+            "end-chef": "plated-chopped-tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-chopped-lettuce-combine-chopped-lettuce-plate": {
+            "start-chef": "chopped-lettuce",
+            "start-station": "plate",
+            "end-chef": null,
+            "end-station": "plated-chopped-lettuce",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "plated-chopped-lettuce-combine-plate-chopped-lettuce": {
+            "start-chef": "plate",
+            "start-station": "chopped-lettuce",
+            "end-chef": "plated-chopped-lettuce",
+            "end-station": null,
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "serve-plated-salad-lettuce-tomato": {
+            "start-chef": "plated-salad-lettuce-tomato",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "serving-station"
+            ]
+        },
+        "serve-plated-lettuce": {
+            "start-chef": "plated-lettuce",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plated-lettuce",
+            "allowed-stations": [
+                "serving-station"
+            ]
+        },
+        "pickup-salad-lettuce-tomato": {
+            "start-chef": null,
+            "start-station": "plated-salad-lettuce-tomato",
+            "end-chef": "plated-salad-lettuce-tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "putdown-salad-lettuce-tomato": {
+            "start-chef": "plated-salad-lettuce-tomato",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plated-salad-lettuce-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "pickup-tomato": {
+            "start-chef": null,
+            "start-station": "tomato",
+            "end-chef": "tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "putdown-tomato": {
+            "start-chef": "tomato",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "tomato",
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "pickup-chopped-tomato": {
+            "start-chef": null,
+            "start-station": "chopped-tomato",
+            "end-chef": "chopped-tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "putdown-chopped-tomato": {
+            "start-chef": "chopped-tomato",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "chopped-tomato",
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "pickup-plated-chopped-tomato": {
+            "start-chef": null,
+            "start-station": "plated-chopped-tomato",
+            "end-chef": "plated-chopped-tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "putdown-plated-chopped-tomato": {
+            "start-chef": "plated-chopped-tomato",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plated-chopped-tomato",
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "pickup-lettuce": {
+            "start-chef": null,
+            "start-station": "lettuce",
+            "end-chef": "lettuce",
+            "end-station": null,
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "putdown-lettuce": {
+            "start-chef": "lettuce",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "lettuce",
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "pickup-chopped-lettuce": {
+            "start-chef": null,
+            "start-station": "chopped-lettuce",
+            "end-chef": "chopped-lettuce",
+            "end-station": null,
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "putdown-chopped-lettuce": {
+            "start-chef": "chopped-lettuce",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "chopped-lettuce",
+            "allowed-stations": [
+                "counter",
+                "chopping-station"
+            ]
+        },
+        "pickup-plated-chopped-lettuce": {
+            "start-chef": null,
+            "start-station": "plated-chopped-lettuce",
+            "end-chef": "plated-chopped-lettuce",
+            "end-station": null,
+            "allowed-stations": [
+                "counter"
+            ]
+        },
+        "putdown-plated-chopped-lettuce": {
+            "start-chef": "plated-chopped-lettuce",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plated-chopped-lettuce",
+            "allowed-stations": [
+                "counter"
+            ]
+        }
+    }
+}
