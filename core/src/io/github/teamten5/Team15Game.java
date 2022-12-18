@@ -4,28 +4,33 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import io.github.teamten5.views.MenuScreen;
+import com.badlogic.gdx.Screen;
 
-public class Team15Game extends ApplicationAdapter {
+
+import com.badlogic.gdx.Game;
+
+
+public class Team15Game extends Game{
 	SpriteBatch batch;
 	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+	public void create() {
+		menuscreen = new MenuScreen(this);
+		setScreen(menuscreen);
+	}
+	private MenuScreen menuscreen;
+	public final static int MENU = 0;
+
+	public void changeScreen(int screen) {
+		switch (screen){
+			case MENU:
+			if (menuscreen == null) {
+				menuscreen = new MenuScreen(this);
+				this.setScreen(menuscreen);
+				break;
+			}
+		}
+
 	}
 
-	@Override
-	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
 }
