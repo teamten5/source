@@ -13,9 +13,11 @@ import com.badlogic.gdx.Screen;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Game;
+import io.github.teamten5.views.Views;
 
 
 public class Team15Game extends Game{
+	private MenuScreen menuscreen;
 	SpriteBatch batch;
 	Texture img;
 	HashMap<String, ItemType> itemsTypes = new HashMap<>();
@@ -25,16 +27,14 @@ public class Team15Game extends Game{
 	HashMap<String, Combination[]> combinations = new HashMap<>();
 	HashMap<String, LevelType> levelTypes = new HashMap<>();
 
+
 	@Override
 	public void create() {
 		menuscreen = new MenuScreen(this);
 		setScreen(menuscreen);
 	}
 
-	private MenuScreen menuscreen;
-	public final static int MENU = 0;
-
-	public void changeScreen(int screen) {
+	public void changeScreen(Views screen) {
 		switch (screen) {
 			case MENU:
 				if (menuscreen == null) {
