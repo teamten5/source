@@ -32,7 +32,7 @@ public class MenuScreen implements Screen {
 
 
                 //temporary skin
-                Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+                Skin skin = new Skin(Gdx.files.internal("assets/MenuSkins/vhs-ui.json"));
 
                 TextButton startGame = new TextButton("START", skin);
                 TextButton exit = new TextButton("Exit", skin);
