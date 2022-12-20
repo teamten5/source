@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.teamten5.views.MenuScreen;
 import io.github.teamten5.views.Views;
 import java.util.HashMap;
@@ -26,6 +25,7 @@ public class Team15Game extends Game{
 
 	@Override
 	public void create() {
+		loadJSON();
 		menuscreen = new MenuScreen(this);
 		setScreen(menuscreen);
 	}
