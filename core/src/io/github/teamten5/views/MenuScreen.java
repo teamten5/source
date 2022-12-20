@@ -1,8 +1,8 @@
 package io.github.teamten5.views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -51,16 +51,17 @@ public class MenuScreen implements Screen {
 
     }
 
-        @Override
-        public void render(float delta) {
-                // clear the screen ready for next set of images to be drawn
-                Gdx.gl.glClearColor(0f, 0f, 0f, 1);
-                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    @Override
+    public void render(float delta) {
+        // clear the screen ready for next set of images to be drawn
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-                // tell our stage to do actions and draw itself
-                stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-                stage.draw();
-        }
+        // tell our stage to do actions and draw itself
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+        stage.draw();
+    }
+
     @Override
     public void resize(int width, int height) {
         // change the stage's viewport when teh screen size is changed
