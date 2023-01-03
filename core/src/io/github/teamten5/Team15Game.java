@@ -1,16 +1,18 @@
 package io.github.teamten5;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.ScreenUtils;
+import io.github.teamten5.views.MenuScreen;
+import io.github.teamten5.views.Views;
 import java.util.HashMap;
 
-public class Team15Game extends ApplicationAdapter {
 
+public class Team15Game extends Game{
+	private MenuScreen menuscreen;
 	SpriteBatch batch;
 	Texture img;
 	HashMap<String, ItemType> itemsTypes = new HashMap<>();
@@ -20,25 +22,24 @@ public class Team15Game extends ApplicationAdapter {
 	HashMap<String, Combination[]> combinations = new HashMap<>();
 	HashMap<String, LevelType> levelTypes = new HashMap<>();
 
+
 	@Override
 	public void create() {
 		loadJSON();
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		menuscreen = new MenuScreen(this);
+		setScreen(menuscreen);
 	}
 
-	@Override
-	public void render() {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
+	public void changeScreen(Views screen) {
+		switch (screen) {
+			case MENU:
+				if (menuscreen == null) {
+					menuscreen = new MenuScreen(this);
+					this.setScreen(menuscreen);
+					break;
+				}
 
-	@Override
-	public void dispose() {
-		batch.dispose();
-		img.dispose();
+		}
 	}
 
 	void loadJSON() {
@@ -126,3 +127,4 @@ public class Team15Game extends ApplicationAdapter {
 		}
 	}
 }
+
