@@ -38,5 +38,15 @@
         "time": 0,
         "chef-required": true,
         "pickup-output": true
+    },
+    "pantry-generate-plate": {
+        "stations": [
+            "pantry-plate"
+        ],
+        "input": null,
+        "output": "plate",
+        "time": 0,
+        "chef-required": true,
+        "pickup-output": true
     }
 }
