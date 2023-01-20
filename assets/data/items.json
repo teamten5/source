@@ -1,9 +1,9 @@
 {
     "plate": {
-        "image": "onion.png"
+        "image": "plate.png"
     },
     "lettuce": {
-        "image": "onion.png"
+        "image": "lettuce.png"
     },
     "chopped-lettuce": {
         "image": "onion.png"
@@ -12,7 +12,7 @@
         "image": "onion.png"
     },
     "tomato": {
-        "image": "onion.png"
+        "image": "tomato.png"
     },
     "chopped-tomato": {
         "image": "onion.png"

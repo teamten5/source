@@ -38,5 +38,35 @@
         "time": 0,
         "chef-required": true,
         "pickup-output": true
+    },
+    "pantry-generate-plate": {
+        "stations": [
+            "pantry-plate"
+        ],
+        "input": null,
+        "output": "plate",
+        "time": 0,
+        "chef-required": true,
+        "pickup-output": true
+    },
+    "pantry-remove-lettuce": {
+        "stations": [
+            "pantry-lettuce"
+        ],
+        "input": "lettuce",
+        "output": null,
+        "time": 0,
+        "chef-required": false,
+        "pickup-output": false
+    },
+    "pantry-remove-plate": {
+        "stations": [
+            "pantry-plate"
+        ],
+        "input": null,
+        "output": null,
+        "time": 0,
+        "chef-required": false,
+        "pickup-output": false
     }
 }

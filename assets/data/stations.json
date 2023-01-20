@@ -1,32 +1,38 @@
 {
     "serving": {
         "serving": true,
-        "image": "onion.png",
-        "size-x": 100,
-        "size-y": 100
+        "image": "serving.png",
+        "size-x": 1,
+        "size-y": 1
     },
     "station-chopping": {
         "serving": false,
-        "image": "onion.png",
-        "size-x": 100,
-        "size-y": 100
+        "image": "chopping.png",
+        "size-x": 1,
+        "size-y": 1
     },
     "counter": {
         "serving": false,
-        "image": "onion.png",
-        "size-x": 100,
-        "size-y": 100
+        "image": "counter.png",
+        "size-x": 1,
+        "size-y": 1
     },
     "pantry-tomato": {
         "serving": false,
-        "image": "onion.png",
-        "size-x": 100,
-        "size-y": 100
+        "image": "pantry-tomato.png",
+        "size-x": 1,
+        "size-y": 1
     },
     "pantry-lettuce": {
         "serving": false,
-        "image": "onion.png",
-        "size-x": 100,
-        "size-y": 100
+        "image": "pantry-lettuce.png",
+        "size-x": 1,
+        "size-y": 1
+    },
+    "pantry-plate": {
+        "serving": false,
+        "image": "pantry-plate.png",
+        "size-x": 1,
+        "size-y": 1
     }
 }
