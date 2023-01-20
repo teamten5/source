@@ -50,6 +50,9 @@ public class Team15Game extends Game{
 		JsonValue itemJSONRoot = jsonReader.parse(Gdx.files.internal("data/items.json"));
 		Gdx.app.log("tag", String.format("there are %d ItemTypes found", itemJSONRoot.size));
 		for (int i = 0; i < itemJSONRoot.size; i++) {
+			if (itemsTypes.containsKey(itemJSONRoot.get(i).name)){
+				throw new InvalidGameDataException(String.format("Item type: %s already exists!", itemJSONRoot.get(i).name));
+			}
 			itemsTypes.put(itemJSONRoot.get(i).name, ItemType.read(itemJSONRoot.get(i)));
 		}
 
