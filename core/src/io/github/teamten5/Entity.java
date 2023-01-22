@@ -1,6 +1,7 @@
 package io.github.teamten5;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 public abstract class Entity extends EntityType {
 
@@ -13,7 +14,7 @@ public abstract class Entity extends EntityType {
         this.y = y;
     }
 
-    abstract void render();
+    abstract void render(Batch batch);
 
-    abstract void update(int time);
+    abstract void update(float delta);
 }

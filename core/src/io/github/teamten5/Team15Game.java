@@ -2,10 +2,12 @@ package io.github.teamten5;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import io.github.teamten5.views.LevelScreen;
 import io.github.teamten5.views.MenuScreen;
 import io.github.teamten5.views.Views;
 import java.util.HashMap;
@@ -26,8 +28,9 @@ public class Team15Game extends Game{
 	@Override
 	public void create() {
 		loadJSON();
-		menuscreen = new MenuScreen(this);
-		setScreen(menuscreen);
+		// menuscreen = new MenuScreen(this);
+		Screen testLevelScreen = new LevelScreen(levelTypes.get("level1"));
+		setScreen(testLevelScreen);
 	}
 
 	public void changeScreen(Views screen) {

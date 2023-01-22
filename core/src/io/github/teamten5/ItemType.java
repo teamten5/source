@@ -18,7 +18,7 @@ public class ItemType extends EntityType {
         );
     }
 
-    public Item instantiate(int x, int y) {
-        return new Item(this.sizeX, this.sizeY, this.image, x, y);
+    public Item instantiate() {
+        return new Item(this, this.sizeX, this.sizeY, this.image, 0, 0);
     }
 }

@@ -26,6 +26,13 @@ public class Combination {
         this.endingOnStation = endingOnStation;
     }
 
+    public boolean isValid(StationType station, ItemType startingChefHolding,
+          ItemType startingOnStation) {
+        return this.station == station
+              && this.startingChefHolding == startingChefHolding
+              && this.startingOnStation == startingOnStation;
+    }
+
     @Contract("_, _, _ -> new")
     public static @NotNull Combination[] read(
           @NotNull JsonValue jsonValue,

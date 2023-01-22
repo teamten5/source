@@ -34,7 +34,7 @@ public class MenuScreen implements Screen {
         //temporary skin
         Skin skin = new Skin(Gdx.files.internal("MenuSkins/skin/vhs-ui.json"));
         TextButton startGame = new TextButton("START", skin);
-        TextButton exit = new TextButton("Exit", skin);
+        TextButton exit = new TextButton("EXIT", skin);
 
         table.add(startGame).fillX().uniformX();
         table.row().pad(20, 0, 10, 0);
