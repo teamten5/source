@@ -1,49 +1,79 @@
 package io.github.teamten5;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import java.util.HashMap;
 
-public class Station extends Entity {
+public class Station {
 
-    final boolean serving;
-    final StationType type;
-    Orientation orientation;
-    Item holding = null;
-    private boolean doAction = false;
+    final StationLevel stationLevel;
+    ItemType holding = null;
+    private boolean chefDoingAction = false;
 
-    public Station(int x, int y, Orientation orientation, StationType type) {
-        super(type.sizeX, type.sizeY, type.image, x, y);
-        this.serving = type.serving;
+    private float actionProgress = 0;
+    private ChefAction currentAction = null;
+    final Level level;
 
-        this.type = type;
-        this.orientation = orientation;
+    public Station(StationLevel stationLevel, Level level) {
+        this.stationLevel = stationLevel;
+        this.level = level;
+
     }
 
-    @Override
     void render(Batch batch) {
-        batch.draw(type.image, x * 32, y * 32);
+        batch.draw(stationLevel.type.image, stationLevel.x * 32, stationLevel.y * 32);
         if (holding != null) {
-            holding.render(batch, x * 32, y * 32);
+            holding.render(batch, stationLevel.x * 32, stationLevel.y * 32);
         }
-        doAction = false;
+
     }
 
-    @Override
     void update(float delta) {
+        if (currentAction != null) {
 
+            if (currentAction.chefRequired) {
+                if (chefDoingAction) {
+                    actionProgress += delta * 1000;
+                }
+            } else {
+                actionProgress += delta * 1000;
+            }
+
+            if (actionProgress >= currentAction.timeToComplete) {
+                holding = currentAction.output;
+                actionProgress = 0;
+            }
+        }
+        chefDoingAction = false;
     }
 
     ItemType getHolding() {
-        if (holding != null) {
-            return holding.type;
+        return holding;
+    }
+
+    ChefAction getAction() { // TODO bad function name
+        if (level.type.chefActions.containsKey(this.stationLevel.type)) {
+            HashMap<ItemType, ChefAction> temp = level.type.chefActions.get(this.stationLevel.type);
+            if (temp.containsKey(holding)) {
+                return temp.get(holding);
+            }
         }
         return null;
     }
 
-    void setHolding(Item holding) {
+    void setHolding(ItemType holding) {
         this.holding = holding;
+        if (currentAction == null) {
+            actionProgress = 0;
+        }
+        currentAction = getAction();
+        if (currentAction != null) {
+            if (currentAction.resetTime) {
+                actionProgress = 0;
+            }
+        }
     }
 
     void doAction() {
-        doAction = true;
+        chefDoingAction = true;
     }
 }

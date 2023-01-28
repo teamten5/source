@@ -3,17 +3,16 @@ package io.github.teamten5;
 import com.badlogic.gdx.utils.JsonValue;
 import java.util.Arrays;
 import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
 
 public class LevelType {
 
     final OrderType[] orderTypes;
-    final Station[] stations;
-    final HashMap<ItemType, HashMap<StationType, ChefAction>> chefActions;
+    final StationLevel[] stations;
+    final HashMap<StationType, HashMap<ItemType, ChefAction>> chefActions;
     final Combination[] combinations;
 
-    public LevelType(OrderType[] orderTypes, Station[] stations,
-          HashMap<ItemType, HashMap<StationType, ChefAction>> chefActions,
+    public LevelType(OrderType[] orderTypes, StationLevel[] stations,
+          HashMap<StationType, HashMap<ItemType, ChefAction>> chefActions,
           Combination[] combinations) {
         this.orderTypes = orderTypes;
         this.stations = stations;
@@ -21,12 +20,12 @@ public class LevelType {
         this.combinations = combinations;
     }
 
-    public static @NotNull LevelType read(
-          @NotNull JsonValue jsonValue,
-          @NotNull HashMap<String, OrderType[]> allOrderTypes,
-          @NotNull HashMap<String, StationType> allStationTypes,
-          @NotNull HashMap<String, HashMap<StationType, ChefAction>> allChefActions,
-          @NotNull HashMap<String, Combination[]> allCombinations
+    public static LevelType read(
+          JsonValue jsonValue,
+          HashMap<String, OrderType[]> allOrderTypes,
+          HashMap<String, StationType> allStationTypes,
+          HashMap<String, ChefAction> allChefActions,
+          HashMap<String, Combination[]> allCombinations
     ) {
 
         JsonValue mapJSON = jsonValue.get("map");
@@ -34,7 +33,7 @@ public class LevelType {
         // Stations
 
         JsonValue stationJSON = mapJSON.get("stations");
-        Station[] stations = new Station[stationJSON.size];
+        StationLevel[] stations = new StationLevel[stationJSON.size];
         for (int i = 0; i < stationJSON.size; i++) {
             JsonValue currentStation = stationJSON.get(i);
             stations[i] = allStationTypes.get(currentStation.getString("type")).instantiate(
@@ -45,24 +44,23 @@ public class LevelType {
         }
 
         // Actions
+        HashMap<StationType, HashMap<ItemType, ChefAction>> chefActions = new HashMap<>();
 
-        @SuppressWarnings("unchecked")
-        HashMap<StationType, ChefAction>[] levelChefActionsArray = Arrays.stream(
-                    jsonValue.get("actions").asStringArray())
-              .map(allChefActions::get).toArray(HashMap[]::new);
-
-        HashMap<ItemType, HashMap<StationType, ChefAction>> chefActions = new HashMap<>();
-        for (HashMap<StationType, ChefAction> chefActionHashMap : levelChefActionsArray) {
-            if (chefActionHashMap.isEmpty()) {
-                continue;
+        for (String levelChefAction : jsonValue.get("actions").asStringArray()) {
+            ChefAction chefAction = allChefActions.get(levelChefAction);
+            HashMap<ItemType, ChefAction> stationChefActions;
+            if (chefActions.containsKey(chefAction.station)) {
+                stationChefActions = chefActions.get(chefAction.station);
+            } else {
+                stationChefActions = new HashMap<>();
+                chefActions.put(chefAction.station, stationChefActions);
             }
 
-            ItemType inputType = chefActionHashMap.entrySet().iterator().next().getValue().input;
+            /*if (stationChefActions.containsKey(chefAction.input)) {
+                throw new InvalidGameDataException("Level has at least two ChefActions with the same input and station");
+            }*/
 
-            if (!chefActions.containsKey(inputType)) {
-                chefActions.put(inputType, new HashMap<>());
-            }
-            chefActions.get(inputType).putAll(chefActionHashMap);
+            stationChefActions.put(chefAction.input, chefAction);
         }
 
         return new LevelType(

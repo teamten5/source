@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 public class PlayerController extends Controller {
 
     private boolean combinationJustDone = false;
+    private boolean chefSwapJustDone = false;
 
     @Override
     public void update(float delta) {
@@ -13,6 +14,7 @@ public class PlayerController extends Controller {
         x = 0;
         doCombination = false;
         doAction = false;
+        swapChef = false;
         if (Gdx.input.isKeyPressed(Keys.W)) {
             y = y + 1.0;
         }
@@ -34,6 +36,13 @@ public class PlayerController extends Controller {
             combinationJustDone = true;
         } else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
             combinationJustDone = false;
+        }
+
+        if (Gdx.input.isKeyPressed(Keys.TAB) && !chefSwapJustDone) {
+            swapChef = true;
+            chefSwapJustDone = true;
+        } else if (!Gdx.input.isKeyPressed(Keys.TAB)) {
+            chefSwapJustDone = false;
         }
 
         if (Gdx.input.isKeyPressed(Keys.SPACE)) {

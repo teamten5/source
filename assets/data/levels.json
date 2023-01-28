@@ -58,6 +58,12 @@
                     "x": 9,
                     "y": 0,
                     "facing": "south"
+                },
+                {
+                    "type": "pantry-plate",
+                    "x": 10,
+                    "y": 0,
+                    "facing": "south"
                 }
             ],
             "valid areas": [
@@ -71,9 +77,7 @@
         },
         "actions": [
             "chop-tomato",
-            "chop-lettuce",
-            "pantry-generate-tomato",
-            "pantry-generate-lettuce"
+            "chop-lettuce"
         ],
         "combinations": [
             "C-plated-salad-lettuce-tomato",
@@ -86,7 +90,10 @@
             "P-plated-chopped-tomato",
             "P-lettuce",
             "P-chopped-lettuce",
-            "P-plated-chopped-lettuce"
+            "P-plated-chopped-lettuce",
+            "pantry-lettuce",
+            "pantry-tomato",
+            "pantry-plates"
         ]
     }
 }

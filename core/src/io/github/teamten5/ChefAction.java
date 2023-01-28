@@ -2,17 +2,16 @@ package io.github.teamten5;
 
 import com.badlogic.gdx.utils.JsonValue;
 import java.util.HashMap;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 public class ChefAction {
 
     final StationType station;
     final ItemType input;
     final ItemType output;
-    final int time;
+    final int timeToComplete;
     final boolean chefRequired;
     final boolean pickupOutput;
+    final boolean resetTime = true;
 
     public ChefAction(StationType station, ItemType input, ItemType output, int time,
           boolean chefRequired, boolean pickupOutput) {
@@ -25,33 +24,23 @@ public class ChefAction {
         this.station = station;
         this.input = input;
         this.output = output;
-        this.time = time;
+        this.timeToComplete = time;
         this.chefRequired = chefRequired;
         this.pickupOutput = pickupOutput;
     }
 
-    @Contract("_, _, _ -> new")
-    public static @NotNull HashMap<StationType, ChefAction> read(
-          @NotNull JsonValue jsonValue,
-          @NotNull HashMap<String, ItemType> items,
-          @NotNull HashMap<String, StationType> stations
+    public static ChefAction read(
+          JsonValue jsonValue,
+          HashMap<String, ItemType> items,
+          HashMap<String, StationType> stations
     ) {
-        HashMap<StationType, ChefAction> actions = new HashMap<>();
-        for (String actionValidStation : jsonValue.get("stations").asStringArray()) {
-            StationType actionStation = stations.get(actionValidStation);
-            actions.put(
-                  actionStation,
-                  new ChefAction(
-                        actionStation,
-                        items.get(jsonValue.getString("input")),
-                        items.get(jsonValue.getString("output")),
-                        jsonValue.getInt("time"),
-                        jsonValue.getBoolean("chef-required"),
-                        jsonValue.getBoolean("pickup-output")
-                  )
-            );
-        }
-
-        return actions;
+        return new ChefAction(
+              stations.get(jsonValue.getString("station")),
+              items.get(jsonValue.getString("input")),
+              items.get(jsonValue.getString("output")),
+              jsonValue.getInt("time"),
+              jsonValue.getBoolean("chef-required"),
+              jsonValue.getBoolean("pickup-output")
+        );
     }
 }

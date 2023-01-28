@@ -7,5 +7,7 @@ public abstract class Controller {
     boolean doAction = false;
     boolean doCombination = false;
 
+    boolean swapChef = false;
+
     abstract void update(float delta);
 }

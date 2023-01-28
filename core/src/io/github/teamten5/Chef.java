@@ -7,7 +7,7 @@ public class Chef extends Entity {
 
     final Level level;
     private Controller controller;
-    private Item holding;
+    private ItemType holding;
 
     public Chef(int x, int y, Level level) {
         this(x, y, level, new NullController());
@@ -23,18 +23,8 @@ public class Chef extends Entity {
     void render(Batch batch) {
         batch.draw(image, x, y, 16, 16);
         if (holding != null) {
-            holding.render(batch, x * 32, y * 32);
+            holding.render(batch, x, y);
         }
-    }
-
-    Station ClosestStation() {
-        for (Station station : level.type.stations) {
-            if ((station.x * 32 <= x && x <= station.x * 32 + 32) && station.y * 32 <= y
-                  && y <= station.y * 32 + 32) {
-                return station;
-            }
-        }
-        return null;
     }
 
     @Override
@@ -43,29 +33,34 @@ public class Chef extends Entity {
         x = x + (int) (controller.x);
         y = y + (int) (controller.y);
         if (controller.doCombination) {
-            Station closestStation = ClosestStation();
+            Station closestStation = level.ClosestStation(x, y);
             if (closestStation != null) {
                 doCombination(closestStation);
             }
         }
-        if (controller.doAction) {
-            Station closestStation = ClosestStation();
+
+        // You cannot do an action if you are holding something
+        if (controller.doAction && holding == null) {
+            Station closestStation = level.ClosestStation(x, y);
             if (closestStation != null) {
                 doAction(closestStation);
             }
         }
+        if (controller.swapChef) {
+            level.swapChefs(this, controller);
+        }
     }
 
-    void SetController(Controller controller) {
+    void setController(Controller controller) {
         this.controller = controller;
     }
 
     void doCombination(Station station) {
         for (Combination combination : level.type.combinations) {
-            if (combination.isValid(station.type, station.getHolding(), this.getHolding())) {
+            if (combination.isValid(station.stationLevel.type, this.getHolding(), station.getHolding())) {
 
-                holding = combination.endingChefHolding.instantiate();
-                station.setHolding(combination.endingOnStation.instantiate());
+                holding = combination.endingChefHolding;
+                station.setHolding(combination.endingOnStation);
 
                 break;
             }
@@ -78,9 +73,6 @@ public class Chef extends Entity {
     }
 
     ItemType getHolding() {
-        if (holding != null) {
-            return holding.type;
-        }
-        return null;
+        return holding;
     }
 }

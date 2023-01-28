@@ -6,21 +6,21 @@
         "image": "lettuce.png"
     },
     "chopped-lettuce": {
-        "image": "onion.png"
+        "image": "chopped-lettuce.png"
     },
     "plated-chopped-lettuce": {
-        "image": "onion.png"
+        "image": "plated-lettuce.png"
     },
     "tomato": {
         "image": "tomato.png"
     },
     "chopped-tomato": {
-        "image": "onion.png"
+        "image": "chopped-tomato.png"
     },
     "plated-chopped-tomato": {
-        "image": "onion.png"
+        "image": "plated-tomato.png"
     },
-    "plated-salad-tomato-lettuce": {
-        "image": "onion.png"
+    "plated-salad-lettuce-tomato": {
+        "image": "plated-salad-lettuce-tomato.png"
     }
 }

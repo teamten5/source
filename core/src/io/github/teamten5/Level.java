@@ -2,23 +2,31 @@ package io.github.teamten5;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Level {
 
     final LevelType type;
     private LinkedList<Order> orders;
-    private Chef[] chefs;
+    private ArrayList<Chef> chefs;
     private Station[] stations;
+    private ArrayDeque<Integer> unactiveChefs;
 
 
     public Level(LevelType type) {
         this.type = type;
 
         orders = new LinkedList<>();
-        chefs = new Chef[]{new Chef(0, 0, this, new PlayerController())};
-        stations = new Station[type.stations.length];
-        System.arraycopy(type.stations, 0, stations, 0, type.stations.length);
+        unactiveChefs = new ArrayDeque<>(List.of(1));
+        chefs = new ArrayList<>(Arrays.asList(
+              new Chef(0, 0, this, new PlayerController()),
+              new Chef(0, 1, this, new NullController())
+        ));
+        stations = Arrays.stream(type.stations).map(x -> x.instantiate(this)).toArray(Station[]::new);
 
     }
 
@@ -39,6 +47,22 @@ public class Level {
         for (Chef chef : chefs) {
             chef.render(batch);
         }
+    }
+    public Station ClosestStation(int x, int y) {
+        for (Station station : stations) {
+            if ((station.stationLevel.x * 32 <= x && x <= station.stationLevel.x * 32 + 32) && station.stationLevel.y * 32 <= y
+                  && y <= station.stationLevel.y * 32 + 32) {
+                return station;
+            }
+        }
+        return null;
+    }
+
+    public void swapChefs(Chef oldChef, Controller controller) {
+        chefs.get(unactiveChefs.pop()).setController(controller);
+        oldChef.setController(new NullController(controller.x, controller.y, controller.doAction));
+        unactiveChefs.add(chefs.indexOf(oldChef));
+
     }
 
 }

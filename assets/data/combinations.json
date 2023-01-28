@@ -125,7 +125,7 @@
             "end-chef": null,
             "end-station": "plated-salad-lettuce-tomato",
             "allowed-stations": [
-                "serving-station"
+                "serving"
             ]
         },
         "serve-plated-lettuce": {
@@ -134,7 +134,7 @@
             "end-chef": null,
             "end-station": "plated-lettuce",
             "allowed-stations": [
-                "serving-station"
+                "serving"
             ]
         },
         "pickup-salad-lettuce-tomato": {
@@ -162,7 +162,7 @@
             "end-station": null,
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "putdown-tomato": {
@@ -171,8 +171,8 @@
             "end-chef": null,
             "end-station": "tomato",
             "allowed-stations": [
-                "counter",
-                "chopping-station"
+                "station-chopping",
+                "counter"
             ]
         },
         "pickup-chopped-tomato": {
@@ -182,7 +182,7 @@
             "end-station": null,
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "putdown-chopped-tomato": {
@@ -192,7 +192,7 @@
             "end-station": "chopped-tomato",
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "pickup-plated-chopped-tomato": {
@@ -220,7 +220,7 @@
             "end-station": null,
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "putdown-lettuce": {
@@ -230,7 +230,7 @@
             "end-station": "lettuce",
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "pickup-chopped-lettuce": {
@@ -240,7 +240,7 @@
             "end-station": null,
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "putdown-chopped-lettuce": {
@@ -250,7 +250,7 @@
             "end-station": "chopped-lettuce",
             "allowed-stations": [
                 "counter",
-                "chopping-station"
+                "station-chopping"
             ]
         },
         "pickup-plated-chopped-lettuce": {
@@ -269,6 +269,33 @@
             "end-station": "plated-chopped-lettuce",
             "allowed-stations": [
                 "counter"
+            ]
+        },
+        "pantry-lettuce":  {
+            "start-chef": null,
+            "start-station": null,
+            "end-chef": "lettuce",
+            "end-station": null,
+            "allowed-stations": [
+                "pantry-lettuce"
+            ]
+        },
+        "pantry-tomato":  {
+            "start-chef": null,
+            "start-station": null,
+            "end-chef": "tomato",
+            "end-station": null,
+            "allowed-stations": [
+                "pantry-tomato"
+            ]
+        },
+        "pantry-plates":  {
+            "start-chef": null,
+            "start-station": null,
+            "end-chef": "plate",
+            "end-station": null,
+            "allowed-stations": [
+                "pantry-plate"
             ]
         }
     }

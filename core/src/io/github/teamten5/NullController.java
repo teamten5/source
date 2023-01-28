@@ -2,13 +2,20 @@ package io.github.teamten5;
 
 public class NullController extends Controller {
 
-    public double x = 0;
-    public double y = 0;
-    public boolean doAction = false;
     public boolean doCombination = false;
 
-    public void update(float delta) {
+    public void update(float delta) {}
+
+    public NullController() {
+        this(0, 0, false);
     }
 
-    ;
+    public NullController(double x, double y, boolean doAction) {
+        this.x = x;
+        this.y = y;
+        this.doAction = doAction;
+
+        doCombination = false;
+    }
+
 }

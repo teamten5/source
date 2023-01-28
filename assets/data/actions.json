@@ -1,72 +1,18 @@
 {
     "chop-tomato": {
-        "stations": [
-            "chopping-board"
-        ],
+        "station": "station-chopping",
         "input": "tomato",
         "output": "chopped-tomato",
-        "time": 3000,
+        "time": 1000,
         "chef-required": true,
         "pickup-output": false
     },
     "chop-lettuce": {
-        "stations": [
-            "chopping-board"
-        ],
-        "input": "tomato",
-        "output": "chopped-tomato",
-        "time": 3000,
-        "chef-required": true,
-        "pickup-output": false
-    },
-    "pantry-generate-tomato": {
-        "stations": [
-            "pantry-tomato"
-        ],
-        "input": null,
-        "output": "tomato",
-        "time": 0,
-        "chef-required": true,
-        "pickup-output": true
-    },
-    "pantry-generate-lettuce": {
-        "stations": [
-            "pantry-lettuce"
-        ],
-        "input": null,
-        "output": "lettuce",
-        "time": 0,
-        "chef-required": true,
-        "pickup-output": true
-    },
-    "pantry-generate-plate": {
-        "stations": [
-            "pantry-plate"
-        ],
-        "input": null,
-        "output": "plate",
-        "time": 0,
-        "chef-required": true,
-        "pickup-output": true
-    },
-    "pantry-remove-lettuce": {
-        "stations": [
-            "pantry-lettuce"
-        ],
+        "station": "station-chopping",
         "input": "lettuce",
-        "output": null,
-        "time": 0,
-        "chef-required": false,
-        "pickup-output": false
-    },
-    "pantry-remove-plate": {
-        "stations": [
-            "pantry-plate"
-        ],
-        "input": null,
-        "output": null,
-        "time": 0,
-        "chef-required": false,
+        "output": "chopped-lettuce",
+        "time": 1000,
+        "chef-required": true,
         "pickup-output": false
     }
 }

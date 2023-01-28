@@ -1,24 +1,34 @@
 package io.github.teamten5;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.JsonValue;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
-public class ItemType extends EntityType {
+public class ItemType extends Entity {
 
     public ItemType(Texture image) {
-        super(0, 0, image);
+        super(0, 0, image, 0, 0);
     }
 
-    @Contract("_ -> new")
-    static public @NotNull ItemType read(@NotNull JsonValue jsonValue) {
+    static public ItemType read( JsonValue jsonValue) {
         return new ItemType(
               new Texture("images/" + jsonValue.getString("image"))
         );
     }
 
-    public Item instantiate() {
-        return new Item(this, this.sizeX, this.sizeY, this.image, 0, 0);
+    @Override
+    void render(Batch batch) {
+        batch.draw(image, x, y);
+    }
+
+    void render(Batch batch, int x, int y) {
+        this.x = x;
+        this.y = y;
+        render(batch);
+    }
+
+    @Override
+    void update(float delta) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -24,7 +24,7 @@ public class StationType extends EntityType {
         );
     }
 
-    public Station instantiate(int x, int y, Orientation orientation) {
-        return new Station(x, y, orientation, this);
+    public StationLevel instantiate(int x, int y, Orientation orientation) {
+        return new StationLevel(x, y, orientation, this);
     }
 }
