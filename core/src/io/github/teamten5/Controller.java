@@ -2,8 +2,11 @@ package io.github.teamten5;
 
 public abstract class Controller {
 
-    double x = 0;
-    double y = 0;
+    float x = 0;
+    float y = 0;
+
+    float facing_x = 0;
+    float facing_y = 0;
     boolean doAction = false;
     boolean doCombination = false;
 

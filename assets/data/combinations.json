@@ -25,6 +25,10 @@
             "putdown-tomato",
             "pickup-tomato"
         ],
+        "P-plate": [
+            "putdown-plate",
+            "pickup-plate"
+        ],
         "P-chopped-tomato": [
             "putdown-chopped-tomato",
             "pickup-chopped-tomato"
@@ -170,6 +174,26 @@
             "start-station": null,
             "end-chef": null,
             "end-station": "tomato",
+            "allowed-stations": [
+                "station-chopping",
+                "counter"
+            ]
+        },
+        "pickup-plate": {
+            "start-chef": null,
+            "start-station": "plate",
+            "end-chef": "plate",
+            "end-station": null,
+            "allowed-stations": [
+                "counter",
+                "station-chopping"
+            ]
+        },
+        "putdown-plate": {
+            "start-chef": "plate",
+            "start-station": null,
+            "end-chef": null,
+            "end-station": "plate",
             "allowed-stations": [
                 "station-chopping",
                 "counter"

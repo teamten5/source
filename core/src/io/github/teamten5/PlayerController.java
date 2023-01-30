@@ -16,19 +16,23 @@ public class PlayerController extends Controller {
         doAction = false;
         swapChef = false;
         if (Gdx.input.isKeyPressed(Keys.W)) {
-            y = y + 1.0;
+            y = y + 3.14f * delta;
+            facing_y = 0.2f;
         }
 
         if (Gdx.input.isKeyPressed(Keys.S)) {
-            y = y - 1.0;
-        }
-
-        if (Gdx.input.isKeyPressed(Keys.A)) {
-            x = x - 3.0;
+            y = y - 3.14f * delta;
+            facing_y = -0.2f;
         }
 
         if (Gdx.input.isKeyPressed(Keys.D)) {
-            x = x + 3.0;
+            x = x + 3.14f * delta;
+            facing_x = 0.2f;
+        }
+
+        if (Gdx.input.isKeyPressed(Keys.A)) {
+            x = x - 3.14f * delta;
+            facing_x = -0.2f;
         }
 
         if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !combinationJustDone) {

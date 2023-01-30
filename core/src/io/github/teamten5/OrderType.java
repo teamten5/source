@@ -2,8 +2,6 @@ package io.github.teamten5;
 
 import com.badlogic.gdx.utils.JsonValue;
 import java.util.HashMap;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 public class OrderType {
 
@@ -13,10 +11,9 @@ public class OrderType {
         this.itemOrdered = itemOrdered;
     }
 
-    @Contract("_, _ -> new")
-    public static @NotNull OrderType read(
-          @NotNull JsonValue jsonValue,
-          @NotNull HashMap<String, ItemType> items
+    public static  OrderType read(
+          JsonValue jsonValue,
+          HashMap<String, ItemType> items
     ) {
 
         return new OrderType(

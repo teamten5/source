@@ -9,7 +9,6 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import io.github.teamten5.views.LevelScreen;
 import io.github.teamten5.views.MenuScreen;
-import io.github.teamten5.views.Views;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,18 +31,6 @@ public class Team15Game extends Game{
 		// menuscreen = new MenuScreen(this);
 		Screen testLevelScreen = new LevelScreen(levelTypes.get("level1"));
 		setScreen(testLevelScreen);
-	}
-
-	public void changeScreen(Views screen) {
-		switch (screen) {
-			case MENU:
-				if (menuscreen == null) {
-					menuscreen = new MenuScreen(this);
-					this.setScreen(menuscreen);
-					break;
-				}
-
-		}
 	}
 
 	void loadJSON() {

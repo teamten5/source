@@ -4,10 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.JsonValue;
 
-public class ItemType extends Entity {
+public class ItemType {
+
+    Texture image;
 
     public ItemType(Texture image) {
-        super(0, 0, image, 0, 0);
+        this.image = image;
     }
 
     static public ItemType read( JsonValue jsonValue) {
@@ -16,19 +18,8 @@ public class ItemType extends Entity {
         );
     }
 
-    @Override
-    void render(Batch batch) {
-        batch.draw(image, x, y);
+    void render(Batch batch, float x, float y) {
+        batch.draw(image, x, y, 1, 1);
     }
 
-    void render(Batch batch, int x, int y) {
-        this.x = x;
-        this.y = y;
-        render(batch);
-    }
-
-    @Override
-    void update(float delta) {
-        throw new UnsupportedOperationException();
-    }
 }

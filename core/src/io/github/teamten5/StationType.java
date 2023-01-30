@@ -2,20 +2,22 @@ package io.github.teamten5;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.JsonValue;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
-public class StationType extends EntityType {
+public class StationType {
 
     final boolean serving;
-
+    int sizeX;
+    int sizeY;
+    Texture image;
     public StationType(int sizeX, int sizeY, Texture image, boolean serving) {
-        super(sizeX, sizeY, image);
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
         this.serving = serving;
+        this.image = image;
     }
 
-    @Contract("_ -> new")
-    public static @NotNull StationType read(@NotNull JsonValue jsonValue) {
+
+    public static StationType read(JsonValue jsonValue) {
         return new StationType(
               jsonValue.getInt("size-x"),
               jsonValue.getInt("size-y"),

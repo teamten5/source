@@ -7,13 +7,15 @@ public class NullController extends Controller {
     public void update(float delta) {}
 
     public NullController() {
-        this(0, 0, false);
+        this(0, 0, 0, 0, false);
     }
 
-    public NullController(double x, double y, boolean doAction) {
+    public NullController(float x, float y, float facing_y, float facing_x, boolean doAction) {
         this.x = x;
         this.y = y;
         this.doAction = doAction;
+        this.facing_x = facing_x;
+        this.facing_y = facing_y;
 
         doCombination = false;
     }

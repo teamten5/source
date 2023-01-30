@@ -1,5 +1,6 @@
 {
     "level1": {
+        "background": "background.png",
         "orders": [
             "salad"
         ],
@@ -70,10 +71,35 @@
                 {
                     "x": 0,
                     "y": 0,
-                    "dx": 10,
-                    "dy": 2
+                    "dx": 12,
+                    "dy": 4,
+                    "floor": "kitchen-floor.png"
+                },
+                {
+                    "x": 0,
+                    "y": 0,
+                    "dx": 2,
+                    "dy": 10,
+                    "floor": "kitchen-floor.png"
+                },
+                {
+                    "x": 5,
+                    "y": 2,
+                    "dx": 2,
+                    "dy": 10,
+                    "floor": "kitchen-floor.png"
+                },
+                {
+                    "x": 1,
+                    "y": 10,
+                    "dx": 12,
+                    "dy": 8,
+                    "floor": "kitchen-floor.png"
                 }
-            ]
+            ],
+            "map-edge": {
+                "straight": ""
+            }
         },
         "actions": [
             "chop-tomato",
@@ -86,6 +112,7 @@
             "S-serve-plated-salad-lettuce-tomato",
             "P-salad-lettuce-tomato",
             "P-tomato",
+            "P-plate",
             "P-chopped-tomato",
             "P-plated-chopped-tomato",
             "P-lettuce",

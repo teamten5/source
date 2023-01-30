@@ -20,9 +20,9 @@ public class Station {
     }
 
     void render(Batch batch) {
-        batch.draw(stationLevel.type.image, stationLevel.x * 32, stationLevel.y * 32);
+        batch.draw(stationLevel.type.image, stationLevel.x, stationLevel.y, 1, 1);
         if (holding != null) {
-            holding.render(batch, stationLevel.x * 32, stationLevel.y * 32);
+            holding.render(batch, stationLevel.x, stationLevel.y);
         }
 
     }
