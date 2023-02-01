@@ -17,11 +17,18 @@ public class LevelScreen implements Screen {
 
     private Level level;
     private OrthographicCamera camera;
+    //private OrthographicCamera cameraUI;
     private Viewport viewport;
+    //private Viewport viewportUI;
+
     private SpriteBatch batch;
+    //private SpriteBatch batchUI;
 
     private ShapeRenderer shapeRenderer;
     float time = 0;
+
+    final int GAME_SCALING = 1;
+    final boolean SHOW_BOUNDING = true;
 
     public LevelScreen(LevelType levelType) {
         this.level = levelType.instantiate();
@@ -30,7 +37,11 @@ public class LevelScreen implements Screen {
         camera.setToOrtho(false);
         viewport = new ScreenViewport(camera);
 
+        //cameraUI = new OrthographicCamera(1536, 1000);
+        //viewportUI = new ScreenViewport(cameraUI);
+
         batch = new SpriteBatch();
+        // batchUI = new SpriteBatch();
         // batch.setProjectionMatrix();
         shapeRenderer = new ShapeRenderer();
     }
@@ -51,37 +62,41 @@ public class LevelScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         camera.update();
 
-        viewport.setWorldSize(40, 40);
+        viewport.setWorldSize(level.type.levelSizeX, level.type.levelSizeY);
+        viewport.setScreenBounds((Gdx.graphics.getWidth() - level.type.levelSizeX * 32)/2,(Gdx.graphics.getHeight() - level.type.levelSizeY * 32)/2,level.type.levelSizeX * 32 * GAME_SCALING,level.type.levelSizeY * 32 * GAME_SCALING);
         viewport.apply();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         level.render(batch);
         batch.end();
 
+
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeType.Line);
         time += delta;
-        if ((int) time % 2 == 0) {
+        if (SHOW_BOUNDING) {
             shapeRenderer.setColor(0, 1, 0,1);
             for (Rectangle rect: level.type.chefValidAreas) {
                 shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
             }
-        } else {
-            for (Rectangle rect: level.type.validArea2) {
-                shapeRenderer.rect(rect.x, rect.y, rect.width, rect.height);
-            }
         }
-
-
         shapeRenderer.end();
+
+        //cameraUI.update();
+        //viewportUI.apply();
+
+
+        //batchUI.setProjectionMatrix(cameraUI.combined);
+        //batchUI.begin();
+        //level.renderUI(batchUI);
+        //batchUI.end();
 
     }
 
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
-        camera.position.set(0f, 0f, 0);
-        batch.setProjectionMatrix(camera.combined);
+        // viewportUI.update(width, height);
     }
 
     @Override

@@ -25,12 +25,12 @@ public class Chef{
         this.controller = controller;
         this.x = x;
         this.y = y;
-        this.image = new Texture("images/onion.png");
+        this.image = new Texture("images/chef_Forwards.png");
     }
 
 
     void render(Batch batch) {
-        batch.draw(image, x, y, sizeX, sizeY);
+        batch.draw(image, x, y, sizeX, sizeY * 2);
         if (holding != null) {
             holding.render(batch, x, y);
         }
@@ -92,7 +92,6 @@ public class Chef{
 
                 break;
             }
-            ;
         }
     }
 

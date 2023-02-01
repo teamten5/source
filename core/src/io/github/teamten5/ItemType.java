@@ -19,7 +19,7 @@ public class ItemType {
     }
 
     void render(Batch batch, float x, float y) {
-        batch.draw(image, x, y, 1, 1);
+        batch.draw(image, x, y, 0.5f, 0.5f);
     }
 
 }

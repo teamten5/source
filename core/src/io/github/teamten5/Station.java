@@ -22,7 +22,7 @@ public class Station {
     void render(Batch batch) {
         batch.draw(stationLevel.type.image, stationLevel.x, stationLevel.y, 1, 1);
         if (holding != null) {
-            holding.render(batch, stationLevel.x, stationLevel.y);
+            holding.render(batch, stationLevel.x + 0.4f, stationLevel.y + 0.3f);
         }
 
     }
@@ -70,6 +70,10 @@ public class Station {
             if (currentAction.resetTime) {
                 actionProgress = 0;
             }
+        }
+        if (stationLevel.type.serving) {
+            level.completeOrder(holding);
+            holding = null;
         }
     }
 

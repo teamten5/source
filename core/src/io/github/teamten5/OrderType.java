@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class OrderType {
 
     final ItemType itemOrdered;
+    final float expiresAfter = 6f;
 
     public OrderType(ItemType itemOrdered) {
         this.itemOrdered = itemOrdered;

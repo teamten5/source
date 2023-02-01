@@ -72,33 +72,30 @@
                     "x": 0,
                     "y": 0,
                     "dx": 12,
-                    "dy": 4,
-                    "floor": "kitchen-floor.png"
+                    "dy": 4
                 },
                 {
                     "x": 0,
                     "y": 0,
                     "dx": 2,
-                    "dy": 10,
-                    "floor": "kitchen-floor.png"
+                    "dy": 10
                 },
                 {
                     "x": 5,
                     "y": 2,
                     "dx": 2,
-                    "dy": 10,
-                    "floor": "kitchen-floor.png"
+                    "dy": 10
                 },
                 {
                     "x": 1,
                     "y": 10,
                     "dx": 12,
-                    "dy": 8,
-                    "floor": "kitchen-floor.png"
+                    "dy": 3
                 }
             ],
-            "map-edge": {
-                "straight": ""
+            "textures": {
+                "floor": "kitchen-floor.png",
+                "border-straight": "border-straight.png"
             }
         },
         "actions": [

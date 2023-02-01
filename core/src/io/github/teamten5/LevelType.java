@@ -17,12 +17,18 @@ public class LevelType {
     final Combination[] combinations;
     final Texture backgroundTexture;
     public List<Rectangle> chefValidAreas;
-    public List<Rectangle> validArea2;
+
+    public int levelSizeX;
+    public int levelSizeY;
+
+    final public int startingReputation = 3;
+
+    Texture floorTexture;
 
     public LevelType(OrderType[] orderTypes, StationLevel[] stations,
           HashMap<StationType, HashMap<ItemType, ChefAction>> chefActions,
           Combination[] combinations, Texture backgroundTexture,
-          List<Rectangle> chefValidAreas, List<Rectangle> chefValidAreas2) {
+          List<Rectangle> chefValidAreas, int levelSizeX, int levelSizeY, Texture floorTexture) {
         this.orderTypes = orderTypes;
         this.stations = stations;
         this.chefActions = chefActions;
@@ -31,8 +37,13 @@ public class LevelType {
         backgroundTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
         this.backgroundTexture = backgroundTexture;
 
+
+
         this.chefValidAreas = chefValidAreas;
-        this.validArea2 = chefValidAreas2;
+        this.levelSizeX = levelSizeX;
+        this.levelSizeY = levelSizeY;
+        floorTexture.setWrap(TextureWrap.Repeat, TextureWrap.Repeat);
+        this.floorTexture = floorTexture;
 
     }
 
@@ -46,26 +57,11 @@ public class LevelType {
 
         JsonValue mapJSON = levelJson.get("map");
 
-        // Stations
+        // Textures
 
-        List<Rectangle> cutouts = new ArrayList<>(); // used when making levels
+        JsonValue textureJSON = mapJSON.get("textures");
 
-        JsonValue stationJSON = mapJSON.get("stations");
-        StationLevel[] stations = new StationLevel[stationJSON.size];
-        for (int i = 0; i < stationJSON.size; i++) {
-            JsonValue currentStation = stationJSON.get(i);
-            stations[i] = allStationTypes.get(currentStation.getString("type")).instantiate(
-                  currentStation.getInt("x"),
-                  currentStation.getInt("y"),
-                  Orientation.fromString(currentStation.getString("facing"))
-            );
-            cutouts.add(new Rectangle(
-                  stations[i].x,
-                  stations[i].y,
-                  stations[i].type.sizeX,
-                  stations[i].type.sizeY
-            ));
-        }
+        Texture floorTexture = new Texture("images/" + textureJSON.getString("floor"));
 
         // Actions
         HashMap<StationType, HashMap<ItemType, ChefAction>> chefActions = new HashMap<>();
@@ -121,6 +117,31 @@ public class LevelType {
         max_x += 1;
         min_x -= 1;
         min_y -= 1;
+
+        // adjustment so centre of the map is 0,0
+        int bl_x = -(max_x-min_x)/2 + 1;
+        int bl_y = -(max_y-min_y)/2 + 1;
+
+        // Stations
+
+        List<Rectangle> cutouts = new ArrayList<>(); // used when making levels
+
+        JsonValue stationJSON = mapJSON.get("stations");
+        StationLevel[] stations = new StationLevel[stationJSON.size];
+        for (int i = 0; i < stationJSON.size; i++) {
+            JsonValue currentStation = stationJSON.get(i);
+            stations[i] = allStationTypes.get(currentStation.getString("type")).instantiate(
+                  currentStation.getInt("x") + bl_x,
+                  currentStation.getInt("y") + bl_y,
+                  Orientation.fromString(currentStation.getString("facing"))
+            );
+            cutouts.add(new Rectangle(
+                  stations[i].x - bl_x,
+                  stations[i].y - bl_y,
+                  stations[i].type.sizeX,
+                  stations[i].type.sizeY
+            ));
+        }
 
         int map[][] = new int[max_x-min_x+1][max_y-min_y+1];
 
@@ -195,7 +216,7 @@ public class LevelType {
                             }
                         }
                     }
-                    chefCollisionArea.add(new Rectangle(i +min_x, j +min_y, n - i + 1, m - j + 1));
+                    chefCollisionArea.add(new Rectangle(i +min_x + bl_x, j + min_y + bl_y, n - i + 1, m - j + 1));
 
                 }
             }
@@ -209,7 +230,7 @@ public class LevelType {
               chefActions,
               Arrays.stream(levelJson.get("combinations").asStringArray())
                     .flatMap(x -> Arrays.stream(allCombinations.get(x))).toArray(Combination[]::new),
-              backgroundTexture, chefCollisionArea, validAreaRectangles);
+              backgroundTexture, chefCollisionArea, max_x-min_x, max_y-min_y, floorTexture);
     }
 
     public Level instantiate() {
